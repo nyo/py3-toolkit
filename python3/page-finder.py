@@ -49,7 +49,6 @@ def checkPage(site, page):
 		c.close()
 	except Exception as error:
 		sys.exit(MSG_EXIT_ERROR % str(error))
-	return False
 
 def getRobots(connection):
 	""" Tries to get content of /robots.txt. """

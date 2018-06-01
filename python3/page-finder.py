@@ -11,18 +11,18 @@ MSG_EXIT_ERROR		= "\033[31m" + "[!] %s" + "\033[0m"
 
 # args parser
 parser = argparse.ArgumentParser()
-parser.add_argument("website", help="address of the website to get pages on.")
+parser.add_argument("website", help="address of the website to get pages on")
 parser.add_argument("--all", help="display all HTTP responses", action="store_true")
 parser.add_argument("--success", help="display successful HTTP responses only", action="store_true")
 args = parser.parse_args()
 
 class Colors:
-	BOLD = "\033[1m"
-	RED	= "\033[31m"
-	GREEN = "\033[32m"
-	YELLOW = "\033[33m"
-	BLUE = "\033[34m"
-	EOC = "\033[0m"
+	EOC		= "\033[0m"
+	BOLD	= "\033[1m"
+	RED		= "\033[31m"
+	GREEN	= "\033[32m"
+	YELLOW	= "\033[33m"
+	BLUE	= "\033[34m"
 
 def checkPage(site, page):
 	""" Checks HTTP status when accessing the given page. """

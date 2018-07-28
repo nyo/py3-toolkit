@@ -9,7 +9,7 @@ MSG_EXIT_BAD = "extension \"%s\" contains invalid characters"
 
 parser = argparse.ArgumentParser(description="program that returns word(s) ending with given extension")
 parser.add_argument("extension", help="the characters you want words ending with")
-parser.add_argument("--fix", help="fixed length for returned words")
+parser.add_argument("--fix", help="fixed length for returned words (used over min/max)")
 parser.add_argument("--min", help="minimum length for returned words")
 parser.add_argument("--max", help="maximum length for returned words")
 args = parser.parse_args()
@@ -18,7 +18,7 @@ if __name__ == "__main__":
 	try:
 		if (re.search("\W", args.extension)):
 			sys.exit(MSG_EXIT_BAD % args.extension)
-		elif args.min > args.max:	
+		elif args.min and args.max and int(args.min) > int(args.max):	
 			sys.exit(MSG_EXIT_ERR % "min arg better than max arg...")
 		r = requests.get("https://www.morewords.com/ends-with/" + args.extension)
 		for result in r.iter_lines():
@@ -34,9 +34,8 @@ if __name__ == "__main__":
 					print(word)
 				elif not args.fix:
 					if not args.min or args.min and len(word) >= int(args.min):
-						if args.max and len(word) > int(args.max):
-							continue
-						print(word)
+						if not args.max or args.max and len(word) <= int(args.max):
+							print(word)
 		sys.exit()
 	except KeyboardInterrupt:
 		sys.exit(MSG_EXIT_INT)

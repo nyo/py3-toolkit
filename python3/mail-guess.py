@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
-import time
-import sys
+import time, sys, os
 
 MSG_EXIT_USAGE		= "\033[33m" + "usage: python3 %s <domain_with_asterisks>" + "\033[0m"
 MSG_EXIT_INTERRUPT	= "\033[31m" + "\n[!] program has been interrupted." + "\033[0m"
@@ -18,7 +17,7 @@ def cmpDomains(u_domain, k_domain):
 
 def guessMail(unknown_domain):
 	""" Searchs all the matches in a list of known domains. """
-	with open("../wordlists/email-domains.txt", 'r') as domains_list:
+	with open(os.path.dirname(os.path.realpath(__file__)) + "/../wordlists/email-domains.txt", 'r') as domains_list:
 		for line in domains_list:
 			known_domain = line.strip('\n')
 			if cmpDomains(unknown_domain, known_domain) is True:

@@ -11,15 +11,15 @@ def cmpDomains(u_domain, k_domain):
 	if len(u_domain) != len(k_domain):
 		return False
 	for i in range(len(u_domain)):
-		if (u_domain[i] != '*') and (u_domain[i] != k_domain[i]):
+		if (u_domain[i] != "*") and (u_domain[i] != k_domain[i]):
 			return False
 	return True
 
 def guessMail(unknown_domain):
 	""" Searchs all the matches in a list of known domains. """
-	with open(os.path.dirname(os.path.realpath(__file__)) + "/../wordlists/email-domains.txt", 'r') as domains_list:
+	with open(os.path.dirname(os.path.realpath(__file__)) + "/../wordlists/email-domains.txt", "r") as domains_list:
 		for line in domains_list:
-			known_domain = line.strip('\n')
+			known_domain = line.strip("\n")
 			if cmpDomains(unknown_domain, known_domain) is True:
 				print("\033[32m>\033[0m", known_domain)
 				time.sleep(0.1)

@@ -1,15 +1,17 @@
-## Python t0olkit
+## python3 toolz 
 
-This repository contains some useful scripts and files I coded, recoded or copied partly.<br>
-_Some of the scripts may or may not run, and some other are old..._
+This repository contains some useful scripts and files I created, re-coded or copied partly.<br>
 
-#### To use these scripts, install requirements first
+#### Requirements installation
 ```
-sudo pip install -r requirements.txt
+sudo pip3 install -r requirements.txt
 ```
 
-#### About wordlists
-Lists of words, names, numbers, pages & domains.<br>
+#### Wordlists
+Lists of words, names, numbers, common pages, domains... used along scripts.<br>
 Some of the sources used:
 * [Wiktionary:Frequency lists](https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists)
 * [hermitdave/FrequencyWords](https://github.com/hermitdave/FrequencyWords/tree/master/content/2016).
+
+#### Scripts
+> soon

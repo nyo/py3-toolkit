@@ -17,25 +17,25 @@ def isValidAddress(ip_address):
 			socket.inet_aton(ip_address)
 		except socket.error:
 			return False
-		return ip_address.count('.') == 3
+		return ip_address.count(".") == 3
 	except socket.error:
 		return False
 	return True
 
 def printDetails(request_json):
 	""" Prints details for an IP lookup request. """
-	print("[+] lookup information for: %s" % request_json['query'])
+	print("[+] lookup information for: %s" % request_json["query"])
 	print("[+] geolocation IP informations:")
-	print("latitude  > %s" % str(request_json['lat']))
-	print("longitude > %s" % str(request_json['lon']))
-	print("country   > %s [%s]" % (request_json['country'], request_json['countryCode']))
-	print("region    > %s [%s]" % (request_json['regionName'], request_json['region']))
-	print("city      > %s (%s)" % (request_json['city'], request_json['zip']))
-	print("timezone  > %s" % request_json['timezone'])
+	print("latitude  > %s" % str(request_json["lat"]))
+	print("longitude > %s" % str(request_json["lon"]))
+	print("country   > %s [%s]" % (request_json["country"], request_json["countryCode"]))
+	print("region    > %s [%s]" % (request_json["regionName"], request_json["region"]))
+	print("city      > %s (%s)" % (request_json["city"], request_json["zip"]))
+	print("timezone  > %s" % request_json["timezone"])
 	print("[+] general IP informations:")
-	print("isp               > %s" % request_json['isp'])
-	print("as number/name    > %s" % request_json['as'])
-	print("organization name > %s" % request_json['org'])
+	print("isp               > %s" % request_json["isp"])
+	print("as number/name    > %s" % request_json["as"])
+	print("organization name > %s" % request_json["org"])
 	
 def lookupAddress(ip_address):
 	""" Gets details about the given IP address. """
@@ -47,7 +47,7 @@ def lookupAddress(ip_address):
 	try:
 		request = requests.get(api_link + ip_address)
 		request_json = request.json()
-		if request_json['status'] == 'success':
+		if request_json["status"] == "success":
 			printDetails(request_json)
 		else:
 			sys.exit(MSG_EXIT_ERR % str(request.status_code))
